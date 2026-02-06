@@ -14,12 +14,12 @@ You are required to help the manager to predict the right group of the new custo
 Include the neural network model diagram.
 
 ## DESIGN STEPS
-### STEP 1: Data Collection and Understanding – Load the dataset, inspect features, and identify the target variable.
-### STEP 2: Data Cleaning and Encoding – Handle missing values and convert categorical data and labels into numerical form.
-### STEP 3: Feature Scaling and Data Splitting – Normalize features and split data into training and testing sets.
-### STEP 4: Model Architecture Design – Define the neural network layers, neurons, and activation functions.
-### STEP 5: Model Training and Optimization – Train the model using a loss function and optimizer through backpropagation.
-### STEP 6: Model Evaluation and Prediction – Evaluate performance using metrics and make predictions on unseen data.
+ STEP 1: Data Collection and Understanding – Load the dataset, inspect features, and identify the target variable.<br>
+ STEP 2: Data Cleaning and Encoding – Handle missing values and convert categorical data and labels into numerical form.<br>
+ STEP 3: Feature Scaling and Data Splitting – Normalize features and split data into training and testing sets.<br>
+ STEP 4: Model Architecture Design – Define the neural network layers, neurons, and activation functions.<br>
+ STEP 5: Model Training and Optimization – Train the model using a loss function and optimizer through backpropagation.<br>
+ STEP 6: Model Evaluation and Prediction – Evaluate performance using metrics and make predictions on unseen data.<br>
 
 ## PROGRAM
 
