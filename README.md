@@ -184,7 +184,7 @@ print(f'Actual class for sample input: {label_encoder.inverse_transform([y_test[
 ```
 
 ### Dataset Information
-<img width="995" height="657" alt="image" src="https://github.com/user-attachments/assets/aebbf488-b879-48d0-b9eb-8337f63158a5" />
+<img width="1349" height="268" alt="image" src="https://github.com/user-attachments/assets/70bb3a87-9393-449c-aa05-1557c4f84e66" />
 
 ### OUTPUT :
 
