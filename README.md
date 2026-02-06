@@ -105,25 +105,31 @@ test_loader = DataLoader(test_dataset, batch_size=16)
 
 # Define Neural Network(Model1)
 class PeopleClassifier(nn.Module):
-    def __init__(self, input_size):
+    def __init__(self, input_size): # Changed init to__init__
         super(PeopleClassifier, self).__init__()
-        self.fc1 = nn.Linear(input_size, 128)
-        self.relu = nn.ReLU()
-        self.fc2 = nn.Linear(128, 64)
-        self.fc3 = nn.Linear(64, 4) # Assuming 4 output classes (A, B, C, D)
+        self.fc1 = nn.Linear(input_size, 32)
+        self.fc2 = nn.Linear(32,16)
+        self.fc3 = nn.Linear(16,8)
+        self.fc4 = nn.Linear(8,4) # Changed fc3 to fc4 to avoid overwriting
 
 
     def forward(self, x):
-        x = self.fc1(x)
-        x = self.relu(x)
-        x = self.fc2(x)
-        x = self.relu(x)
-        x = self.fc3(x)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = F.relu(self.fc3(x))
+        x = self.fc4(x)
         return x
 
 # Training Loop
 def train_model(model, train_loader, criterion, optimizer, epochs):
-  #Include your code here
+    model.train()
+    for epoch in range(epochs):
+        for inputs, labels in train_loader:
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
     if (epoch + 1) % 10 == 0:
         print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
 
@@ -132,6 +138,9 @@ input_size = X_train.shape[1]
 model = PeopleClassifier(input_size)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+
+train_model(model, train_loader, criterion, optimizer, epochs=100)
 
 # Evaluation
 model.eval()
@@ -181,12 +190,13 @@ print(f'Actual class for sample input: {label_encoder.inverse_transform([y_test[
 
 ## Confusion Matrix
 
-<img width="682" height="577" alt="image" src="https://github.com/user-attachments/assets/94243f6c-8da6-4db1-8588-284eab16d80f" />
+<img width="814" height="600" alt="image" src="https://github.com/user-attachments/assets/b0cd2ac8-1e05-4e55-953f-c3275cfc7e3f" />
 
 ## Classification Report
-<img width="823" height="432" alt="image" src="https://github.com/user-attachments/assets/286e0294-b19f-4cc2-b360-4d0593adc09b" />
+<img width="640" height="446" alt="image" src="https://github.com/user-attachments/assets/3fbf1067-ea4a-4d50-8454-ed5ef27112d6" />
 
 ### New Sample Data Prediction
-<img width="1341" height="122" alt="image" src="https://github.com/user-attachments/assets/64b03bb0-ec8b-4bca-9040-86980c66cb98" />
+<img width="572" height="124" alt="image" src="https://github.com/user-attachments/assets/01327af9-ef31-41cc-bd7b-96e18c4476d3" />
+
 
 ## RESULT
